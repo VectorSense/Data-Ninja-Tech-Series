@@ -1,0 +1,181 @@
+CREATE DATABASE IF NOT EXISTS webdata;
+
+
+
+USE DATABASE webdata;
+
+CREATE SCHEMA IF NOT EXISTS iis;
+
+CREATE TABLE iis.log
+(date string,
+ time string,
+ client_ip string,
+ username string,
+ server_ip string,
+ port int,
+ method string,
+ stem string,
+ query string,
+ status string,
+ server_bytes int,
+ client_bytes int,
+ time_taken int?,
+ user_agent string,
+ referrer string,
+ INDEX idx_logdate CLUSTERED (date))
+DISTRIBUTED BY HASH(client_ip);
+
+
+
+
+USE DATABASE webdata;
+
+@log =
+EXTRACT date string,
+        time string,
+        client_ip string,
+        username string,
+        server_ip string,
+        port int,
+        method string,
+        stem string,
+        query string,
+        status string,
+        server_bytes int,
+        client_bytes int,
+        time_taken int?,
+        user_agent string,
+        referrer string
+FROM "/iislogs/{*}.txt"
+USING Extractors.Text(' ', silent:true);
+
+INSERT INTO iis.log
+SELECT * FROM @log;
+
+
+
+
+@table = SELECT * FROM [webdata].[iis].[log]
+         ORDER BY date, time
+         FETCH FIRST 100;
+
+OUTPUT @table
+    TO "/Outputs/webdata.iis.log.tsv"
+    USING Outputters.Tsv();
+
+
+
+
+USE DATABASE webdata;
+
+CREATE VIEW iis.summary
+AS
+SELECT date,
+       COUNT(*) AS hits,
+       SUM(server_bytes) AS bytes_sent,
+       SUM(client_bytes) AS bytes_received
+FROM iis.log
+GROUP BY date;
+
+
+
+
+
+@view = SELECT * FROM [webdata].[iis].[summary];
+
+OUTPUT @view
+    TO "/Outputs/webdata.iis.summary.tsv"
+    ORDER BY date
+    USING Outputters.Tsv();
+
+
+
+
+
+USE DATABASE webdata;
+
+CREATE FUNCTION iis.summarizelog(@Year int, @Month int)
+RETURNS @summarizedlog TABLE
+(
+  date string,
+  hits long?,
+  bytes_sent long?,
+  bytes_received long?
+)
+AS
+BEGIN
+  @summarizedlog =
+    SELECT date,
+           hits,
+           bytes_sent,
+           bytes_received
+    FROM iis.summary
+    WHERE DateTime.Parse(date).Year == @Year
+    AND DateTime.Parse(date).Month == @Month;
+END;
+
+
+
+
+
+USE DATABASE webdata;
+
+@june = iis.summarizelog(2008, 6);
+
+OUTPUT @june
+    TO "/Outputs/june.csv"
+    ORDER BY date
+    USING Outputters.Csv();
+
+
+
+
+
+USE DATABASE webdata;
+
+CREATE PROCEDURE iis.LoadLog (@File string)
+AS
+BEGIN
+  @log =
+    EXTRACT date string,
+            time string,
+            client_ip string,
+            username string,
+            server_ip string,
+            port int,
+            method string,
+            stem string,
+            query string,
+            status string,
+            server_bytes int,
+            client_bytes int,
+            time_taken int?,
+            user_agent string,
+            referrer string
+    FROM @File
+    USING Extractors.Text(' ', silent:true);
+
+  INSERT INTO iis.log
+  SELECT * FROM @log;
+END;
+
+
+
+
+
+[webdata].[iis].[LoadLog]("/iislogs/2008-07.txt");
+
+
+
+
+
+USE DATABASE webdata;
+
+@july = iis.summarizelog(2008, 7);
+
+OUTPUT @july
+    TO "/Outputs/july.csv"
+    ORDER BY date
+    USING Outputters.Csv();
+
+

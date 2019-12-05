@@ -1,0 +1,183 @@
+CREATE DATABASE IF NOT EXISTS webdata;
+USE DATABASE webdata;
+
+CREATE SCHEMA IF NOT EXISTS iis;
+
+CREATE TABLE iis.log
+(date string,
+ time string,
+ client_ip string,
+ username string,
+ server_ip string,
+ port int,
+ method string,
+ stem string,
+ query string,
+ status string,
+ server_bytes int,
+ client_bytes int,
+ time_taken int?,
+ user_agent string,
+ referrer string,
+ INDEX idx_logdate CLUSTERED (date))
+DISTRIBUTED BY HASH(client_ip);
+
+@log =
+EXTRACT date string,
+        time string,
+        client_ip string,
+        username string,
+        server_ip string,
+        port int,
+        method string,
+        stem string,
+        query string,
+        status string,
+        server_bytes int,
+        client_bytes int,
+        time_taken int?,
+        user_agent string,
+        referrer string
+FROM "/iislogs/{*}.txt"
+USING Extractors.Text(' ', silent:true);
+
+INSERT INTO iis.log
+SELECT * FROM @log;
+
+CREATE VIEW iis.summary
+AS
+SELECT date,
+       COUNT(*) AS hits,
+       SUM(server_bytes) AS bytes_sent,
+       SUM(client_bytes) AS bytes_received
+FROM iis.log
+GROUP BY date;
+
+
+
+
+
+
+USE DATABASE webdata;
+
+@ipdetails = SELECT DISTINCT client_ip,
+        System.Net.IPAddress.Parse(client_ip).AddressFamily.ToString() 
+           AS ipfamily
+FROM iis.log;
+
+OUTPUT @ipdetails
+    TO "/output/ipdetails.csv"
+    USING Outputters.Csv();
+
+
+
+
+
+
+
+USE DATABASE webdata;
+
+@paramstrings =
+ SELECT stem AS page,
+        new SQL.ARRAY<string>(
+          query.Split('&').Where(x => x.Contains("="))
+          ) AS paramstrings
+ FROM iis.log;
+
+ @params =
+  SELECT DISTINCT page, param 
+  FROM @paramstrings
+  CROSS APPLY EXPLODE(paramstrings) AS t(param);
+
+ OUTPUT @params
+    TO "/output/params.csv"
+    ORDER BY page, param
+    USING Outputters.Csv();
+
+
+
+
+
+
+
+public static class Requests
+{
+  public static string GetParameter(string queryString, 
+                                    string parameterName)
+  {
+    string paramValue = "";
+    int startParam = queryString.IndexOf(parameterName + "=");
+    if (startParam >= 0)
+    {
+      int startVal = queryString.IndexOf("=", startParam) + 1;
+      int endVal = queryString.IndexOf("&", startVal);
+      if (endVal < 0)
+      {
+        endVal = queryString.Length;
+      }
+      paramValue = queryString.Substring(startVal, endVal - startVal);
+    }
+    return paramValue;
+  }
+}
+
+
+
+
+
+
+
+@products =
+    SELECT ProductCounts.Requests.GetParameter(query, "productid") 
+           AS product
+    FROM iis.log
+    WHERE query.Contains("productid");
+
+@productRequests =
+    SELECT product,
+           COUNT(*) AS requests
+    FROM @products
+    GROUP BY product;
+
+OUTPUT @productRequests
+TO "/output/productRequests.csv"
+USING Outputters.Csv();
+
+
+
+
+
+
+
+namespace DataUtilities
+{
+    public class Convertor
+    {
+        public static float BytesToKb(long? bytes)
+        {
+            return (float)bytes / 1000;
+        }
+    }
+}
+
+
+
+
+
+
+
+USE DATABASE webdata;
+
+REFERENCE ASSEMBLY DataUtilities;
+
+@kb =
+  SELECT date,
+         DataUtilities.Convertor.BytesToKb(bytes_received) AS kb_received 
+  FROM iis.summary;
+
+ OUTPUT @kb
+    TO "/output/kb.csv"
+    ORDER BY date
+    USING Outputters.Csv();
+
+

@@ -1,0 +1,121 @@
+@log = EXTRACT entry string
+       FROM "/iislogs/2008-01.txt"
+       USING Extractors.Text();
+
+OUTPUT @log
+TO "/output/log.txt"
+USING Outputters.Text();
+
+
+
+
+
+@log = EXTRACT entry string
+       FROM "/iislogs/2008-01.txt"
+       USING Extractors.Text();
+
+@cleaned = SELECT entry
+           FROM @log
+           WHERE entry.Substring(0,1) != "#";
+
+OUTPUT @cleaned
+TO "/output/cleaned.txt"
+USING Outputters.Text();
+
+
+
+
+
+@log = EXTRACT date string,
+               time string,
+               client_ip string,
+               username string,
+               server_ip string,
+               port int,
+               method string,
+               stem string,
+               query string,
+               status string,
+               server_bytes int,
+               client_bytes int,
+               time_taken int,
+               user_agent string,
+               referrer string
+        FROM "/iislogs/2008-01.txt"
+        USING Extractors.Text(' ', silent:true);
+
+OUTPUT @log
+TO "/output/log.csv"
+USING Outputters.Csv();
+
+
+
+
+
+
+@log = EXTRACT date string,
+               time string,
+               client_ip string,
+               username string,
+               server_ip string,
+               port int,
+               method string,
+               stem string,
+               query string,
+               status string,
+               server_bytes int,
+               client_bytes int,
+               time_taken int,
+               user_agent string,
+               referrer string
+        FROM "/iislogs/2008-01.txt"
+        USING Extractors.Text(' ', silent:true);
+
+@dailysummary = SELECT date,
+                       COUNT(*) AS hits,
+                       SUM(server_bytes) AS bytes_sent,
+                       SUM(client_bytes) AS bytes_received
+                FROM @log
+                GROUP BY date;
+
+OUTPUT @dailysummary
+TO "/output/daily_summary.csv"
+ORDER BY date
+USING Outputters.Csv();
+
+
+
+
+
+
+@log = EXTRACT date string,
+               time string,
+               client_ip string,
+               username string,
+               server_ip string,
+               port int,
+               method string,
+               stem string,
+               query string,
+               status string,
+               server_bytes int,
+               client_bytes int,
+               time_taken int,
+               user_agent string,
+               referrer string
+        FROM "/iislogs/{*}.txt"
+        USING Extractors.Text(' ', silent:true);
+
+@dailysummary = SELECT date,
+                       COUNT(*) AS hits,
+                       SUM(server_bytes) AS bytes_sent,
+                       SUM(client_bytes) AS bytes_received
+                FROM @log
+                GROUP BY date;
+
+OUTPUT @dailysummary
+TO "/output/six_month_summary.csv"
+ORDER BY date
+USING Outputters.Csv();
+
+

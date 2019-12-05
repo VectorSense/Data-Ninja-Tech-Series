@@ -1,0 +1,122 @@
+CREATE DATABASE IF NOT EXISTS webdata;
+USE DATABASE webdata;
+
+CREATE SCHEMA IF NOT EXISTS iis;
+
+CREATE TABLE iis.log
+(date string,
+ time string,
+ client_ip string,
+ username string,
+ server_ip string,
+ port int,
+ method string,
+ stem string,
+ query string,
+ status string,
+ server_bytes int,
+ client_bytes int,
+ time_taken int?,
+ user_agent string,
+ referrer string,
+ INDEX idx_logdate CLUSTERED (date))
+DISTRIBUTED BY HASH(client_ip);
+
+@log =
+EXTRACT date string,
+        time string,
+        client_ip string,
+        username string,
+        server_ip string,
+        port int,
+        method string,
+        stem string,
+        query string,
+        status string,
+        server_bytes int,
+        client_bytes int,
+        time_taken int?,
+        user_agent string,
+        referrer string
+FROM "/iislogs/{*}.txt"
+USING Extractors.Text(' ', silent:true);
+
+INSERT INTO iis.log
+SELECT * FROM @log;
+
+CREATE VIEW iis.summary
+AS
+SELECT date,
+       COUNT(*) AS hits,
+       SUM(server_bytes) AS bytes_sent,
+       SUM(client_bytes) AS bytes_received
+FROM iis.log
+GROUP BY date;
+
+
+
+
+
+
+USE DATABASE webdata;
+
+@requests =
+  SELECT DateTime.Parse(date) AS date,
+        COUNT(*) AS requests,
+        SUM(server_bytes) AS bytes_sent,
+        SUM(client_bytes) AS bytes_received
+  FROM iis.log
+  GROUP BY DateTime.Parse(date);
+
+@daily_averages =
+  SELECT (int)date.DayOfWeek AS weekday,
+         date.ToString("dddd") AS dayname,
+         AVG(requests) AS AvgRequests,
+         AVG(bytes_sent) AS AvgBytesSent,
+         AVG(bytes_received) AS AvgBytesRecvd
+  FROM @requests
+  GROUP BY (int)date.DayOfWeek,
+          date.ToString("dddd");
+
+  OUTPUT @daily_averages
+    TO "/Outputs/daily_averages.csv"
+    ORDER BY weekday
+    USING Outputters.Csv();
+
+
+
+
+
+
+
+
+@months = 
+  SELECT DISTINCT DateTime.Parse(date).Month AS month,
+         DateTime.Parse(date).ToString("MMMM") AS month_name
+  FROM iis.log;
+
+@ip_requests =
+  SELECT DateTime.Parse(date) AS date,
+         client_ip
+  FROM iis.log;
+
+@monthly_counts =
+  SELECT date.Month AS month,
+         client_ip,
+         COUNT(*) AS requests
+  FROM @ip_requests
+  GROUP BY date.Month,
+           client_ip;
+
+@named_monthly_counts =
+    SELECT m.month, m.month_name, c.client_ip, c.requests
+    FROM @monthly_counts AS c
+         INNER JOIN
+             @months AS m
+         ON c.month == m.month;
+
+OUTPUT @named_monthly_counts
+  TO "/Outputs/monthly_counts_by_ip.csv"
+  ORDER BY month, client_ip
+  USING Outputters.Csv();
+
