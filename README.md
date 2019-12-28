@@ -16,7 +16,7 @@ In the exercises in this lab you will build data pipelines using data related to
 
 ### Azure Synapse Analytics
 
-Microsoft recently announced Azure Synapse Analytics as the evolution of Azure SQL Data Warehouse blending big data, data warehousing, and data integration into a single service for end-to-end analytics at cloud scale. This reference architecture and workshop content will be updated as annouced features in the roadmap become publicly available. For more information please visit: https://azure.microsoft.com/en-au/services/synapse-analytics/
+Microsoft recently announced Azure Synapse Analytics as the evolution of Azure SQL Data Warehouse blending big data, data warehousing, and data integration into a single service for end-to-end analytics at cloud scale. The reference architecture and workshop content will be updated as annouced features in the roadmap become publicly available. For more information please visit: https://azure.microsoft.com/en-au/services/synapse-analytics/
 
 ![](./Media/AzureSynapse.png)
 
