@@ -77,7 +77,7 @@ The estimated time to complete this lab is: **30 minutes**.
 -------------|
 **In order to avoid potential delays caused by issues found during the ARM template deployment it is recommended you execute Lab 0 prior to Day 1.**|
 
-### [Lab 1: Load Data into Azure Synapse Analytics using Azure Data Factory Pipelines](./DIY Demos/Lab1/Lab1.md)
+### [Lab 1: Load Data into Azure Synapse Analytics using Azure Data Factory Pipelines](./DIYDemos/Lab1/Lab1.md)
 
 In this lab you will configure the Azure environment to allow relational data to be transferred from a Azure SQL Database to an Azure Synapse Analytics database using Azure Data Factory. The dataset you will use contains data about motor vehicle collisions that happened in New York City from 2012 to 2019. You will use Power BI to visualise collision data loaded from Azure Synapse Analytics.
 
