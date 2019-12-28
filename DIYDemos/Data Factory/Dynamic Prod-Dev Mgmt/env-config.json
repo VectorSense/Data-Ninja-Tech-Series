@@ -1,0 +1,22 @@
+{
+  "DEV":{
+    "SourceServerName": "ServerName",
+    "SourceDatabaseName": "DatabaseName",
+    "SourceUserName": "UserName",
+    "SourcePassword": "Password",
+    "DestinationServerName": "DestServername",
+    "DestinationDatabaseName": "DestDatabaseName",
+    "DestinationUserName": "DestUserName",
+    "DestinationPassword": "DestPwd"
+  },
+  "PROD":{
+    "SourceServerName": "",
+    "SourceDatabaseName": "",
+    "SourceUserName": "",
+    "SourcePassword": "",
+    "DestinationServerName": "",
+    "DestinationDatabaseName": "",
+    "DestinationUserName": "",
+    "DestinationPassword": ""
+  }
+}

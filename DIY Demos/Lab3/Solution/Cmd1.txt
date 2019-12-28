@@ -1,3 +1,0 @@
-spark.conf.set(
-  "fs.azure.account.key.<your MDWDataLake storage account name>.blob.core.windows.net",
-  "<your MDWDataLake storage account key>")
