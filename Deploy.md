@@ -109,7 +109,7 @@ In this section you will use automated deployment and ARM templates to automate 
 
 ## Workshop cost management
 
-The approximate cost to run the resources provisioned for the estimated duration of this workshop (2 days) is around USD 100.00. Remember that you will start get charged from the moment the resource template deployment completes successfully. You can minimise costs during the execution of the labs by taking the following actions below:
+The approximate cost to run the resources provisioned for the estimated duration of this workshop is around USD 100.00. Remember that you will start get charged from the moment the resource template deployment completes successfully. You can minimise costs during the execution of the labs by taking the following actions below:
 
 Azure Resource | Type | Action |
 ---------------|------|--------|
@@ -120,4 +120,4 @@ ADPDesktop | Virtual Machine | Stop it after completing Lab 4
 ADPLogicApp | Logic App | Disable it after completing Lab 5
 SynapseStreamAnalytics-*suffix* | Stream Analytics job | Pause job after completing Lab 5
 
-Some of the services still incur costs even when not running. If you don't want any extra charges associated with the lab resources you should delete the lab resource group and all resources in it.
+Some of the services still incur costs even when not running. If you don't want any extra charges associated with the lab resources you should delete the lab resource group and all resources in it. would recommend to delete resource group and recreate when required . 
