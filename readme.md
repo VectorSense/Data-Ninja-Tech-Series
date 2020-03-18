@@ -16,6 +16,15 @@
 
 <h2>Data Ninja Series Step-Step-Guide</h2>
 <img src="http://139.59.61.161/Data-Ninja-Tech-Series/Data%20Ninja%20Series%20Step-Step-Guide.png" alt="Data Ninja Series Step-Step-Guide">
+<h2>Useful links</h2>
+<p>3. Privacy Statement</p>
+<p>http://aka.ms/DataNinjaSeries_Privacy</p>
+<p>5. Assessment (Mar 23)</p>
+<p>http://aka.ms/DataNinjaSeries_Assessment</p>
+<p>5. GitHub Challenges (Mar 23 – Apr 3)</p>
+<p>https://github.com/VectorSense/Data-Ninja-Tech-Series/tree/master/Get%20Project%20Ready</p>
+<p>6. Submission of Challenges (Apr 3)</p>
+<p>https://aka.ms/DataNinjaSeries_Challenges</p>
 <h2>Frequently Asked Questions (FAQ)</h2>
 <h4>1. Who should attend the series?</h4>
 
