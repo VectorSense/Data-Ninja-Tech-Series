@@ -18,12 +18,9 @@
 
 <img src="http://139.59.61.161/Data-Ninja-Tech-Series/Data%20Ninja%20Series%20Step-Step-Guide.png" alt="Data Ninja Series Step-Step-Guide">
 <h2>Useful links for the above diagram</h2>
-<table>
-	<tr style="border-top: 0px solid #c6cbd1!important;">
-		<td style="border: 0px solid #dfe2e5!important;"><img src="http://139.59.61.161/Data-Ninja-Tech-Series/Image3.png" alt="3"></td>
-		<td style="border: 0px solid #dfe2e5!important;">Privacy Statement</td>
-	</tr>
-</table>
+
+<p><img src="http://139.59.61.161/Data-Ninja-Tech-Series/Image3.png" alt="3"><span>Privacy Statement</span></p>
+
 <p>http://aka.ms/DataNinjaSeries_Privacy</p>
 <p><img src="http://139.59.61.161/Data-Ninja-Tech-Series/Image5.png" alt="5"> Assessment (Mar 23)</p>
 <p>http://aka.ms/DataNinjaSeries_Assessment</p>
