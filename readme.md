@@ -24,9 +24,6 @@
 		<td style="border: 0px solid #dfe2e5!important;">Privacy Statement</td>
 	</tr>
 </table>
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 <p>http://aka.ms/DataNinjaSeries_Privacy</p>
 <p><img src="http://139.59.61.161/Data-Ninja-Tech-Series/Image5.png" alt="5"> Assessment (Mar 23)</p>
 <p>http://aka.ms/DataNinjaSeries_Assessment</p>
