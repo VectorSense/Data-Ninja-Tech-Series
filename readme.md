@@ -14,7 +14,7 @@
 <h2>Data Ninja Series Process Flow</h2>
 <h2>Data Ninja Series Step-Step-Guide</h2>
 <h2>Frequently Asked Questions (FAQ)</h2>
-<p style="font-weight: 600;">1. Who should attend the series?</p>
+<p style="padding-bottom: 10px;font-size: 26px;font-weight: 700;">1. Who should attend the series?</p>
 
 
 <p>Aspiring Data Scientists, Practising Data Scientists, Data Platform Architects, Solution Architects, AI Practice Managers and Technical Sales Team</p>
@@ -26,7 +26,7 @@
 Register yourself using the form &lt;link: http://aka.ms/DataNinjaSeries_Privacy&gt; and you would be added to the discussion forum.
  
 <p style="font-weight: 600;">4. How do I submit my challenges?</p>
-<p>You have to download the PPT template to update the challenges outcomes & submit them here. &lt;link:https://aka.ms/DataNinjaSeries_Challenges&gt;</p>
+<p>You have to download the PPT template to update the challenges outcomes & submit them here. &lt;link: https://aka.ms/DataNinjaSeries_Challenges&gt;</p>
  
 <p style="font-weight: 600;">5. What is the timeline to submit my challenges?</p>
 <p>Participants need to submit their PPT post completing all chalanges within 5 days from last day of the session.</p>
