@@ -32,13 +32,13 @@
 <p>Aspiring Data Scientists, Practising Data Scientists, Data Platform Architects, Solution Architects, AI Practice Managers and Technical Sales Team</p>
  
 <h4>2. Do i need to have my own Azure subscrition?</h4>
-<p>Yes, a free subscription is available from the Azure site &lt;link: https://azure.microsoft.com/en-in/free/&gt;</p>
+<p>Yes, a free subscription is available from the Azure site https://azure.microsoft.com/en-in/free/</p>
  
 <h4>3. How do I get access to the Microsoft Discussion Forum?</h4>
-Register yourself using the form &lt;link: http://aka.ms/DataNinjaSeries_Privacy&gt; and you would be added to the discussion forum.
+Register yourself using the form http://aka.ms/DataNinjaSeries_Privacy and you would be added to the discussion forum.
  
 <h4>4. How do I submit my challenges?</h4>
-<p>You have to download the PPT template to update the challenges outcomes & submit them here. &lt;link: https://aka.ms/DataNinjaSeries_Challenges&gt;</p>
+<p>You have to download the PPT template from the Git location https://github.com/VectorSense/Data-Ninja-Tech-Series/tree/master/Get%20Project%20Ready/Submission%20Template and submit challenges outcomes at https://aka.ms/DataNinjaSeries_Challenges</p>
  
 <h4>5. What is the timeline to submit my challenges?</h4>
 <p>Participants need to submit their PPT post completing all chalanges within 5 days from last day of the session.</p>
