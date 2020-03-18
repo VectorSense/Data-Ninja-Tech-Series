@@ -12,7 +12,10 @@
 <p>Exit Criteria: Solve Challenges</p>
 <p>Content Level: 300-400</p>
 <h2>Data Ninja Series Process Flow</h2>
+<img src="http://139.59.61.161/Data-Ninja-Tech-Series/Data%20Ninja%20Series%20Process%20Flow.png" alt="Data Ninja Series Process Flow">
+
 <h2>Data Ninja Series Step-Step-Guide</h2>
+<img src="http://139.59.61.161/Data-Ninja-Tech-Series/Data%20Ninja%20Series%20Step-Step-Guide.png" alt="Data Ninja Series Step-Step-Guide">
 <h2>Frequently Asked Questions (FAQ)</h2>
 <h4>1. Who should attend the series?</h4>
 
