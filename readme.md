@@ -14,30 +14,30 @@
 <h2>Data Ninja Series Process Flow</h2>
 <h2>Data Ninja Series Step-Step-Guide</h2>
 <h2>Frequently Asked Questions (FAQ)</h2>
-<p style="padding-bottom: 10px;font-size: 26px;font-weight: 700;">1. Who should attend the series?</p>
+<h4>1. Who should attend the series?</h4>
 
 
 <p>Aspiring Data Scientists, Practising Data Scientists, Data Platform Architects, Solution Architects, AI Practice Managers and Technical Sales Team</p>
  
-<p style="font-weight: 600;">2. Do i need to have my own Azure subscrition?</p>
+<h4>2. Do i need to have my own Azure subscrition?</h4>
 <p>Yes, a free subscription is available from the Azure site &lt;link: https://azure.microsoft.com/en-in/free/&gt;</p>
  
-<p style="font-weight: 600;">3. How do I get access to the Microsoft Discussion Forum?</p>
+<h4>3. How do I get access to the Microsoft Discussion Forum?</h4>
 Register yourself using the form &lt;link: http://aka.ms/DataNinjaSeries_Privacy&gt; and you would be added to the discussion forum.
  
-<p style="font-weight: 600;">4. How do I submit my challenges?</p>
+<h4>4. How do I submit my challenges?</h4>
 <p>You have to download the PPT template to update the challenges outcomes & submit them here. &lt;link: https://aka.ms/DataNinjaSeries_Challenges&gt;</p>
  
-<p style="font-weight: 600;">5. What is the timeline to submit my challenges?</p>
+<h4>5. What is the timeline to submit my challenges?</h4>
 <p>Participants need to submit their PPT post completing all chalanges within 5 days from last day of the session.</p>
  
-<p style="font-weight: 600;">6.How do I clarify my doubts while doing offline challenges?</p>
+<h4>6.How do I clarify my doubts while doing offline challenges?</h4>
 <p>Post your queries in the Teams Discussion Forum with details. Moderators manning Offline will answer.</p>
  
-<p style="font-weight: 600;">7. How do I get notified about my challenge outcomes?</p>
+<h4>7. How do I get notified about my challenge outcomes?</h4>
 <p>All results will be posted in the discussion forum within 10days from the last day of session.</p>
  
-<p style="font-weight: 600;">8. Can I attend the sessions without having to participate in challenges?</p>
+<h4>8. Can I attend the sessions without having to participate in challenges?</h4>
 <p>Yes, however, the experience is not the same. It is recommended to follow the daily tasks to gain the knowledge.</p>
 
 </div>
