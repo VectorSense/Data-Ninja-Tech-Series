@@ -1,6 +1,6 @@
 <body style="font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;">
 <div class="container">
-<img src="http://139.59.61.161/Data-Ninja-Tech-Series/forqueries.png" alt="For queries">
+<img src="http://139.59.61.161/Data-Ninja-Tech-Series/forqueries-1.png" alt="For queries">
 <h1>About Data Ninja Series</h1>
 <p>A new Microsoft Pilot Project from OCP Enablement Team (Corp) to methodically on-board & create skill pipe on Winning Data Estate, Data Modernization @ Scale. This enables GSI Account teams to skill up across various roles like Data Engineers, Data Scientists, Data Architects @ Scale.</p>
 <p>This Series is covered in 2 Modules</p>
@@ -55,6 +55,6 @@ Register yourself using the form http://aka.ms/DataNinjaSeries_Privacy and you w
  
 <h4>8. Can I attend the sessions without having to participate in challenges?</h4>
 <p>Yes, however, the experience is not the same. It is recommended to follow the daily tasks to gain the knowledge.</p>
-<img src="http://139.59.61.161/Data-Ninja-Tech-Series/forqueries.png" alt="For queries">
+<img src="http://139.59.61.161/Data-Ninja-Tech-Series/forqueries-1.png" alt="For queries">
 </div>
 </body>
