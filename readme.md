@@ -55,6 +55,6 @@ Register yourself using the form http://aka.ms/DataNinjaSeries_Privacy and you w
  
 <h4>8. Can I attend the sessions without having to participate in challenges?</h4>
 <p>Yes, however, the experience is not the same. It is recommended to follow the daily tasks to gain the knowledge.</p>
-<p style="font-weight: bolder;color:red;"><sup>*</sup>For all program queries, reach out to Srikanth (v-srdha@microsoft.com)</p>
+<p style="font-weight: bolder;color:red;"><sup>*</sup>For all program queries, reach out to Srikanth (v-srdha@microsoft.com) </p>
 </div>
 </body>
